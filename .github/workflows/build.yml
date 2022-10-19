@@ -1,12 +1,12 @@
 name: Contrast Security SCA
 
 on:
-  pull_request:
+  push:
     branches:
       - "main"
 
 jobs:
-  Contrast-Security-SCA:
+  Check-Dependency-Vulnerabilities:
     runs-on: ubuntu-latest
     steps:
         # Checkout/build your application/install Node
@@ -19,6 +19,6 @@ jobs:
           orgId: ${{ secrets.CONTRAST_ORGANIZATION_ID }}
           authHeader: ${{ secrets.CONTRAST_AUTH_HEADER }}
           apiUrl: ${{ secrets.CONTRAST_API_URL }}
-          filePath: mypath/to/config/files
+          filePath: package.json
           severity: medium
           fail: true
